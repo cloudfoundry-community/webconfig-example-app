@@ -107,14 +107,14 @@ You will see these values change if you target the `Production` environment.
 
 The configuration server repository used with this application is found [here](https://github.com/mvalliath/webconfig-example-externalfiles) 
 
-* The following settings were externalized based on environment (`Development` or `Production`):
-   * appSettings - Setting1 and CommonSetting  
-   * connectionStrings - MyDB
-   * serviceModel - address, binding and bindingConfiguration 
+* The following settings were externalized:
+   * appSettings - `Setting1` and `CommonSetting` 
+   * connectionStrings - `MyDB`
+   * serviceModel - `address`, `binding` and `bindingConfiguration` 
    
  * In our example, `CommonSetting` is a value we want common across all environments. We have that setting in the common configuration file [sampleapp.yml](https://github.com/mvalliath/webconfig-example-externalfiles/blob/master/sampleapp.yml).
  
- * `Setting1`, `MyDB` and `serviceModel` settings differ by enevironment. So we have them in environment specific files:
+ * In our example, we want `Setting1`, `MyDB` and `serviceModel` settings to differ by environment, `Development` or `Production`. Thus, we have them in environment-specific files:
     * [sampleapp-Development.yml](https://github.com/mvalliath/webconfig-example-externalfiles/blob/master/sampleapp-Development.yml)  
     * [sampleapp-Production.yml](https://github.com/mvalliath/webconfig-example-externalfiles/blob/master/sampleapp-Production.yml)
     
