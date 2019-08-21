@@ -1,10 +1,12 @@
 # webconfig-example-app
 Example app for web config transform buildpack. 
 
-For instructions on how to use this buildpack with your own app and external configuration files, please see the buildpack [repository] (https://github.com/greenhouse-org/web-config-transform-buildpack)
+In our example app and configuration files we demonstrate the use of general configuration transformation through tokenization, as well as the special use case for transformation without tokenization for appSettings and connectionStrings. 
 
-## How to use:
->Note: This repository includes solution files specific to Visual Studio. Once downloaded, cd into the web project folder (WebConfigSampleApp) to run the below commands as is
+For instructions on how to use this buildpack with your own application and external configuration files, please see the buildpack [repository](https://github.com/greenhouse-org/web-config-transform-buildpack)
+
+## Usage :
+>Note: This repository includes solution files specific to Visual Studio. Once you download this application, cd into the web project folder (WebConfigSampleApp) to run the below commands as is. 
 
 #### 1. Create a service for Spring Cloud Config Server
 
@@ -56,14 +58,14 @@ You can directly view the changes made to the web.Config file by ssh'ing into yo
 ```script
   cf ssh sampleapp  
 ```
-Once ssh'd into the container, cd into the app directory and view the web.Config files. You should now see the replaced values that are defined in the configuration repository. 
+Once ssh'd into the container, cd into the app directory and view the web.Config files. 
 
 ``` script
 cd app
 type web.Config 
 ```
 
-In the above example, we targeted the `Development` environment. Using this configuration file, your web.Config will now have the development environment configuration values. Observe these values are different than the original `web.Config` file in the app repository:
+You should now see the replaced values that are defined in the configuration repository. In the above example, we targeted the `Development` environment, so the updated web.Config will now have the development environment configuration values. Observe these values are different than the original `web.Config` file in the app repository:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -99,10 +101,11 @@ neutral, PublicKeyToken=31bf3856ad364e35" warningLevel="4" compilerOptions="/lan
 </configuration>
 ```
 
-You will see these values change if you target the Production environment. 
+You will see these values change if you target the `Production` environment. 
 
 ###  Notes on the example external configuration server repository: 
-In our example app and configuration files we demonstrate the use of general configuration transformation through tokenization, as well as the special use case for transformation without tokenization for appSettings and connectionStrings. 
+
+The configuration server repository used with this application is found [here](https://github.com/mvalliath/webconfig-example-externalfiles) 
 
 * The following settings were externalized based on environment (`Development` or `Production`):
    * appSettings - Setting1 and CommonSetting  
@@ -110,6 +113,7 @@ In our example app and configuration files we demonstrate the use of general con
    * serviceModel - address, binding and bindingConfiguration 
    
  * In our example, `CommonSetting` is a value we want common across all environments. We have that setting in the common configuration file [sampleapp.yml](https://github.com/mvalliath/webconfig-example-externalfiles/blob/master/sampleapp.yml).
+ 
  * `Setting1`, `MyDB` and `serviceModel` settings differ by enevironment. So we have them in environment specific files:
     * [sampleapp-Development.yml](https://github.com/mvalliath/webconfig-example-externalfiles/blob/master/sampleapp-Development.yml)  
     * [sampleapp-Production.yml](https://github.com/mvalliath/webconfig-example-externalfiles/blob/master/sampleapp-Production.yml)
