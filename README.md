@@ -1,20 +1,20 @@
 # webconfig-example-app
 Example app for web config transform buildpack. 
 
-For instructions on how to use this buildpack with your own app and external configuration files, please see the buildpack repository (https://github.com/greenhouse-org/web-config-transform-buildpack)
+For instructions on how to use this buildpack with your own app and external configuration files, please see the buildpack [repository] (https://github.com/greenhouse-org/web-config-transform-buildpack)
 
 ## How to use:
-*This repository includes solution files specific to Visual Studio. Once downloaded, cd into the web project folder (WebConfigSampleApp) to run the below commands as is*
-### 1. Create a service for Spring Cloud Config Server
+>Note: This repository includes solution files specific to Visual Studio. Once downloaded, cd into the web project folder (WebConfigSampleApp) to run the below commands as is
 
-* Make sure you have config server available in your CF marketplace. 
-    > NOTE: To check if you have this server, run `cf marketplace`. You should see `p.config-server` or `p-config-server` in this list. 
+#### 1. Create a service for Spring Cloud Config Server
+
+* Make sure you have config server available in your CF marketplace. To check if you have this server, run `cf marketplace`. You should see `p.config-server` or `p-config-server` in this list. 
 
 * Create config server using the CF cli. This will target an example config server repository found [here](https://github.com/mvalliath/webconfig-example-externalfiles)
     ```script
     cf create-service p-config-server standard my_configserver  -c .\config-server.json
     ```
-### 2. Push the sample app to CF
+#### 2. Push the sample app to CF
 * Publish the web project to `bin/Release/Publish` (we will push this folder's contents to CF). Make sure to select the `Release` configuration when publishing the app.
 
 * Push the app to CF. The below command will target the `Development` configuration file in the example config server repository. If you want to target another environment (e.g. `Production`), swap this value out for the `env` argument. 
@@ -51,7 +51,7 @@ For instructions on how to use this buildpack with your own app and external con
    ================================================================================
    ```
 
-### 3. Observe changes made to the web.Config file
+#### 3. Observe changes made to the web.Config file
 You can directly view the changes made to the web.Config file by ssh'ing into your app container.
 ```script
   cf ssh sampleapp  
@@ -63,7 +63,7 @@ cd app
 type web.Config 
 ```
 
-In the above example, we targeted the `Development` environment. Using this configuration file, your web.Config will now have the development environment configuration values:
+In the above example, we targeted the `Development` environment. Using this configuration file, your web.Config will now have the development environment configuration values. Observe these values are different than the original `web.Config` file in the app repository:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -101,18 +101,20 @@ neutral, PublicKeyToken=31bf3856ad364e35" warningLevel="4" compilerOptions="/lan
 
 You will see these values change if you target the Production environment. 
 
-###  How configuration settings were externalized in git repository
-* Below settings were externalized based on environment
+###  Notes on the example external configuration server repository: 
+In our example app and configuration files we demonstrate the use of general configuration transformation through tokenization, as well as the special use case for transformation without tokenization for appSettings and connectionStrings. 
+
+* The following settings were externalized based on environment (`Development` or `Production`):
    * appSettings - Setting1 and CommonSetting  
    * connectionStrings - MyDB
-   * serviceModel - address, binding and bindingConfiguration
+   * serviceModel - address, binding and bindingConfiguration 
    
- * `CommonSetting` ia common across all environments. So have that setting in [sampleapp.yml](https://github.com/mvalliath/webconfig-example-externalfiles/blob/master/sampleapp.yml).
- * `Setting1`, `MyDB` and `serviceModel` settings differ by enevironment. So have them in environment specific files.
+ * In our example, `CommonSetting` is a value we want common across all environments. We have that setting in the common configuration file [sampleapp.yml](https://github.com/mvalliath/webconfig-example-externalfiles/blob/master/sampleapp.yml).
+ * `Setting1`, `MyDB` and `serviceModel` settings differ by enevironment. So we have them in environment specific files:
     * [sampleapp-Development.yml](https://github.com/mvalliath/webconfig-example-externalfiles/blob/master/sampleapp-Development.yml)  
     * [sampleapp-Production.yml](https://github.com/mvalliath/webconfig-example-externalfiles/blob/master/sampleapp-Production.yml)
     
-    > Note: file names should match to your app name. In this example filenames start with `sampleapp` since we specified application name as `sampleapp` in manifest.yml
+    > Note: file names should match to your app name. In this example filenames start with `sampleapp` since we specified application name as `sampleapp` in our app's `manifest.yml`
  
  
    
