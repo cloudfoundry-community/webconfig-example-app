@@ -15,14 +15,14 @@ For instructions on how to use this buildpack with your own app and external con
     cf create-service p-config-server standard my_configserver  -c .\config-server.json
     ```
 ### 2. Push the sample app to CF
-* Publish web project to bin/release/publish (we push this folder contents to CF)
+* Publish the web project to `bin/Release/Publish` (we will push this folder's contents to CF). Make sure to select the `Release` configuration when publishing the app.
 
-* Push app to CF. The below command will target the `Development` configuration file in the example config server repository. If you want to target another environment (e.g. `Production`), swap this value out for the `env` argument. 
+* Push the app to CF. The below command will target the `Development` configuration file in the example config server repository. If you want to target another environment (e.g. `Production`), swap this value out for the `env` argument. 
    ```script
    cf push --var env=Development
    ```
    
-* Observe the logs. web-configtranform buildpack emits logs when it replaces settings. 
+* Observe the logs. The web-configtranform buildpack emits logs when it replaces settings. 
    ```text
    Downloading hwc_buildpack...
    Downloaded hwc_buildpack
@@ -51,7 +51,7 @@ For instructions on how to use this buildpack with your own app and external con
    ================================================================================
    ```
 
-### 3. Observe changes made to the web.Config file!
+### 3. Observe changes made to the web.Config file
 You can directly view the changes made to the web.Config file by ssh'ing into your app container.
 ```script
   cf ssh sampleapp  
@@ -107,8 +107,8 @@ You will see these values change if you target the Production environment.
    * connectionStrings - MyDB
    * serviceModel - address, binding and bindingConfiguration
    
- 1. `CommonSetting` ia common across all environments. So have that setting in [sampleapp.yml](https://github.com/mvalliath/webconfig-example-externalfiles/blob/master/sampleapp.yml).
- 1. `Setting1`, `MyDB` and `serviceModel` settings differ by enevironment. So have them in environment specific files.
+ * `CommonSetting` ia common across all environments. So have that setting in [sampleapp.yml](https://github.com/mvalliath/webconfig-example-externalfiles/blob/master/sampleapp.yml).
+ * `Setting1`, `MyDB` and `serviceModel` settings differ by enevironment. So have them in environment specific files.
     * [sampleapp-Development.yml](https://github.com/mvalliath/webconfig-example-externalfiles/blob/master/sampleapp-Development.yml)  
     * [sampleapp-Production.yml](https://github.com/mvalliath/webconfig-example-externalfiles/blob/master/sampleapp-Production.yml)
     
