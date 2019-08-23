@@ -6,7 +6,7 @@ In our example app and configuration files we demonstrate the use of general con
 For instructions on how to use this buildpack with your own application and external configuration files, please see the buildpack [repository](https://github.com/greenhouse-org/web-config-transform-buildpack)
 
 ## Usage :
->Note: This repository includes solution files specific to Visual Studio. Once you download this application, cd into the web project folder (WebConfigSampleApp) to run the below commands as is. 
+This repository includes solution files specific to Visual Studio. Once you download this application, cd into the web project folder (WebConfigSampleApp) to run the below commands as is. 
 
 #### 1. Create a service for Spring Cloud Config Server
 
