@@ -16,6 +16,8 @@ For instructions on how to use this buildpack with your own application and exte
     ```script
     cf create-service p-config-server standard my_configserver  -c .\config-server.json
     ```
+>Note: If you're having trouble creating the service, make sure your `config-server.json` is saved with standard UTF-8 encoding. You can also try giving the full path to your config-server.json for the configuration (`-c`) parameter, which seems to resolve some JSON issues with the CLI. 
+
 #### 2. Push the sample app to CF
 * Open the application in Visual Studio, and publish the web project to `bin/Release/Publish`. We will push this folder's contents to CF. In *Advanced* make sure to select the `Release` configuration when publishing the app 
 
