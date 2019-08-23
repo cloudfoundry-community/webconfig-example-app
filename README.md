@@ -17,7 +17,7 @@ For instructions on how to use this buildpack with your own application and exte
     cf create-service p-config-server standard my_configserver  -c .\config-server.json
     ```
 #### 2. Push the sample app to CF
-* Publish the web project to `bin/Release/Publish` (we will push this folder's contents to CF). Make sure to select the `Release` configuration when publishing the app.
+* Open the application in Visual Studio, and publish the web project to `bin/Release/Publish`. We will push this folder's contents to CF. In *Advanced* make sure to select the `Release` configuration when publishing the app 
 
 * Push the app to CF. The below command will target the `Development` configuration file in the example config server repository. If you want to target another environment (e.g. `Production`), swap this value out for the `env` argument. 
    ```script
