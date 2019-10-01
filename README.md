@@ -107,7 +107,7 @@ You will see these values change if you target the `Production` environment.
 
 ###  Notes on the example external configuration server repository: 
 
-The configuration server repository used with this application is found [here](https://github.com/mvalliath/webconfig-example-externalfiles) 
+The configuration server repository used with this application is found [here](https://github.com/cloudfoundry-community/webconfig-example-externalfiles) 
 
 * The following settings were externalized:
    * appSettings - `Setting1` and `CommonSetting` 
