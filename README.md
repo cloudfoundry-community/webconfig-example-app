@@ -114,11 +114,11 @@ The configuration server repository used with this application is found [here](h
    * connectionStrings - `MyDB`
    * serviceModel - `address`, `binding` and `bindingConfiguration` 
    
- * In our example, `CommonSetting` is a value we want common across all environments. We have that setting in the common configuration file [sampleapp.yml](https://github.com/mvalliath/webconfig-example-externalfiles/blob/master/sampleapp.yml).
+ * In our example, `CommonSetting` is a value we want common across all environments. We have that setting in the common configuration file [sampleapp.yml](https://github.com/cloudfoundry-community/webconfig-example-externalfiles/blob/master/sampleapp.yml).
  
  * In our example, we want `Setting1`, `MyDB` and `serviceModel` settings to differ by environment, `Development` or `Production`. Thus, we have them in environment-specific files:
-    * [sampleapp-Development.yml](https://github.com/mvalliath/webconfig-example-externalfiles/blob/master/sampleapp-Development.yml)  
-    * [sampleapp-Production.yml](https://github.com/mvalliath/webconfig-example-externalfiles/blob/master/sampleapp-Production.yml)
+    * [sampleapp-Development.yml](https://github.com/cloudfoundry-community/webconfig-example-externalfiles/blob/master/sampleapp-Development.yml)  
+    * [sampleapp-Production.yml](https://github.com/cloudfoundry-community/webconfig-example-externalfiles/blob/master/sampleapp-Production.yml)
     
     > Note: file names should match to your app name. In this example filenames start with `sampleapp` since we specified application name as `sampleapp` in our app's `manifest.yml`
  
