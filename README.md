@@ -12,7 +12,7 @@ This repository includes solution files specific to Visual Studio. Once you down
 
 * Make sure you have config server available in your CF marketplace. To check if you have this server, run `cf marketplace`. You should see `p.config-server` or `p-config-server` in this list. 
 
-* Create config server using the CF cli. This will target an example config server repository found [here](https://github.com/mvalliath/webconfig-example-externalfiles)
+* Create config server using the CF cli. This will target an example config server repository found [here](https://github.com/cloudfoundry-community/webconfig-example-externalfiles)
     ```script
     cf create-service p-config-server standard my_configserver  -c .\config-server.json
     ```
