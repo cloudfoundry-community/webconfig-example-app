@@ -3,7 +3,7 @@ Example app for web config transform buildpack.
 
 In our example app and configuration files we demonstrate the use of general configuration transformation through tokenization, as well as the special use case for transformation without tokenization for appSettings and connectionStrings. 
 
-For instructions on how to use this buildpack with your own application and external configuration files, please see the buildpack [repository](https://github.com/greenhouse-org/web-config-transform-buildpack)
+For instructions on how to use this buildpack with your own application and external configuration files, please see the buildpack [repository](https://github.com/cloudfoundry-community/web-config-transform-buildpack)
 
 ## Usage :
 This repository includes solution files specific to Visual Studio. Once you download this application, cd into the web project folder (WebConfigSampleApp) to run the below commands as is. 
