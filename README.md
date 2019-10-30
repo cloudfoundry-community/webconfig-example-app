@@ -36,7 +36,7 @@ This repository includes solution files specific to Visual Studio. Once you down
    Downloading build artifacts cache...
    Downloaded build artifacts cache (237B)
    Downloaded app package (6.9M)
-   Downloaded buildpack `https://github.com/cloudfoundry-community/web-config-transform-buildpack/releases/download/v1.1.8/Pivotal.Web.Config
+   Downloaded buildpack `https://github.com/cloudfoundry-community/web-config-transform-buildpack/releases/download/v1.1.8/Web.Config
    ================================================================================
    =============== WebConfig Transform Buildpack execution started ================
    ================================================================================
